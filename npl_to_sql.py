@@ -60,8 +60,9 @@ def main():
     nlp_text = prompt_input()
     #combine_prompts(df, nlp_text)
 
-    response = openai.Completion.create(
-    model="code-davinci-002",
+    client = OpenAI( api_key = API_KEY)
+    response = client.completions.create(
+    model="gpt-3.5-turbo-instruct",
     prompt=combine_prompts(df, nlp_text),
     temperature=0,
     max_tokens=150,
